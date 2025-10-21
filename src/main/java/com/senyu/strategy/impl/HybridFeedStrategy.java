@@ -5,10 +5,10 @@ import com.senyu.entity.Post;
 import com.senyu.entity.User;
 import com.senyu.mapper.UserMapper;
 import com.senyu.strategy.FeedStrategy;
+import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.Resource;
 
 /**
  * 混合模式Feed流策略

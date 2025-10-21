@@ -2,12 +2,12 @@ package com.senyu.config;
 
 import com.senyu.interceptor.LogInterceptor;
 import com.senyu.interceptor.RateLimitInterceptor;
+import jakarta.annotation.Resource;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import javax.annotation.Resource;
 
 /**
  * Web MVC配置

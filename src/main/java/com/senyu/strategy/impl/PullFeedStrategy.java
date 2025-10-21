@@ -6,11 +6,11 @@ import com.senyu.entity.Post;
 import com.senyu.mapper.FeedOutboxMapper;
 import com.senyu.strategy.FeedStrategy;
 import com.senyu.util.RedisKeyUtil;
+import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.Resource;
 import java.time.LocalDateTime;
 import java.util.concurrent.TimeUnit;
 

@@ -7,12 +7,12 @@ import com.senyu.entity.Post;
 import com.senyu.mapper.FeedInboxMapper;
 import com.senyu.mapper.PostMapper;
 import com.senyu.util.RedisKeyUtil;
+import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ZSetOperations;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;

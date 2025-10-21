@@ -7,12 +7,12 @@ import com.senyu.entity.User;
 import com.senyu.mapper.FollowMapper;
 import com.senyu.mapper.UserMapper;
 import com.senyu.util.RedisKeyUtil;
+import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.Resource;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
