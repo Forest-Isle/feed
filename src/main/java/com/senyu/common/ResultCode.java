@@ -20,6 +20,16 @@ public enum ResultCode {
     // 用户相关
     USER_NOT_FOUND(1001, "用户不存在"),
     USER_ALREADY_EXISTS(1002, "用户已存在"),
+    EMAIL_ALREADY_EXISTS(1003, "邮箱已存在"),
+    INVALID_PASSWORD(1004, "密码错误"),
+    USER_INACTIVE(1005, "用户已被禁用"),
+
+    // 认证相关
+    TOKEN_EXPIRED(1101, "Token已过期"),
+    INVALID_TOKEN(1102, "无效的Token"),
+    TOKEN_BLACKLISTED(1103, "Token已被列入黑名单"),
+    TOKEN_INVALID_VERSION(1104, "Token版本不匹配"),
+    TOKEN_MISSING(1105, "缺少Token"),
 
     // 内容相关
     POST_NOT_FOUND(2001, "内容不存在"),

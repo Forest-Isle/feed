@@ -1,3 +1,4 @@
+
 spring:
   application:
     name: feed-system
@@ -51,7 +52,7 @@ mybatis-plus:
 
 # 服务器配置
 server:
-  port: 8080
+  port: 8070
   servlet:
     context-path: /api
 
@@ -67,6 +68,21 @@ feed:
   max-feed-size: 1000
   # 单次拉取Feed数量
   page-size: 20
+
+# JWT配置
+jwt:
+  # JWT密钥（生产环境请务必修改为强密钥）
+  secret: feed-system-jwt-secret-key-please-change-this-in-production-environment-256-bits
+  # Access Token过期时间（毫秒）- 2小时
+  access-token-expiration: 7200000
+  # Refresh Token过期时间（毫秒）- 7天
+  refresh-token-expiration: 604800000
+  # Token发行者
+  issuer: feed-system
+  # Token请求头名称
+  header: Authorization
+  # Token前缀
+  prefix: 'Bearer '
 
 # 日志配置
 logging:
@@ -95,14 +111,15 @@ management:
   metrics:
     tags:
       application: ${spring.application.name}
-    export:
-      prometheus:
-        enabled: true
   health:
     redis:
       enabled: true
     db:
       enabled: true
+  prometheus:
+    metrics:
+      export:
+        enabled: true
 
 # Swagger/OpenAPI配置
 springdoc:

@@ -21,9 +21,24 @@ public class User {
     private Long id;
 
     /**
-     * 用户名
+     * 用户名（唯一）
      */
     private String username;
+
+    /**
+     * 密码（BCrypt加密）
+     */
+    private String password;
+
+    /**
+     * 邮箱（唯一）
+     */
+    private String email;
+
+    /**
+     * 手机号
+     */
+    private String phone;
 
     /**
      * 昵称
@@ -59,6 +74,16 @@ public class User {
      * 是否活跃用户
      */
     private Boolean isActive;
+
+    /**
+     * Token版本号（用于使token失效）
+     */
+    private Integer tokenVersion;
+
+    /**
+     * 最后登录时间
+     */
+    private LocalDateTime lastLoginAt;
 
     /**
      * 创建时间

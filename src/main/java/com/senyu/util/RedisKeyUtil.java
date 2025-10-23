@@ -12,6 +12,7 @@ public class RedisKeyUtil {
     private static final String POST_PREFIX = "post:";
     private static final String FOLLOWER_PREFIX = "follower:";
     private static final String FOLLOWING_PREFIX = "following:";
+    private static final String TOKEN_PREFIX = "token:";
 
     /**
      * 用户Feed流缓存Key
@@ -64,5 +65,21 @@ public class RedisKeyUtil {
      */
     public static String getHotPostsKey() {
         return POST_PREFIX + "hot";
+    }
+
+    /**
+     * Token黑名单Key
+     * 使用String存储，value为过期时间
+     */
+    public static String getTokenBlacklistKey(String token) {
+        return TOKEN_PREFIX + "blacklist:" + token;
+    }
+
+    /**
+     * 在线用户Key
+     * 使用Set存储
+     */
+    public static String getOnlineUsersKey() {
+        return USER_PREFIX + "online";
     }
 }

@@ -3,6 +3,7 @@ package com.senyu.service;
 import cn.hutool.core.collection.CollUtil;
 import com.senyu.common.PageResult;
 import com.senyu.config.FeedConfig;
+import com.senyu.entity.FeedInbox;
 import com.senyu.entity.Post;
 import com.senyu.mapper.FeedInboxMapper;
 import com.senyu.mapper.PostMapper;
@@ -72,7 +73,7 @@ public class FeedService {
             log.info("缓存未命中，从数据库获取Feed流");
             postIds = feedInboxMapper.selectUserFeed(userId, maxId, pageSize)
                     .stream()
-                    .map(feedInbox -> feedInbox.getPostId())
+                    .map(FeedInbox::getPostId)
                     .collect(Collectors.toList());
         }
 
@@ -114,7 +115,7 @@ public class FeedService {
         // 1. 先从热门内容缓存获取
         String hotPostsKey = RedisKeyUtil.getHotPostsKey();
         Set<Object> hotPostIds = redisTemplate.opsForZSet()
-                .reverseRange(hotPostsKey, (page - 1) * pageSize, page * pageSize - 1);
+                .reverseRange(hotPostsKey, (long) (page - 1) * pageSize, (long) page * pageSize - 1);
 
         if (CollUtil.isNotEmpty(hotPostIds)) {
             postIds = hotPostIds.stream()
@@ -209,8 +210,8 @@ public class FeedService {
         // 从数据库重新加载
         List<Long> postIds = feedInboxMapper.selectUserFeed(userId, null, feedConfig.getMaxFeedSize())
                 .stream()
-                .map(feedInbox -> feedInbox.getPostId())
-                .collect(Collectors.toList());
+                .map(FeedInbox::getPostId)
+                .toList();
 
         if (!postIds.isEmpty()) {
             // 重新写入缓存
